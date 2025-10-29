@@ -6,7 +6,8 @@ export default function NavBar() {
   const nav = useNavigate();
   const location = useLocation();
 
-  function handleLogout() {
+  function handleLogout(e) {
+    e.preventDefault();
     logout();
     nav('/');
   }
@@ -26,19 +27,22 @@ export default function NavBar() {
 
       <div className="nav-links">
         {/* Enlaces protegidos */}
-        {isLoggedIn() && links.map(link => (
-          <Link
-            key={link.to}
-            to={link.to}
-            className={`nav-button ${location.pathname === link.to ? "activo" : ""}`}
-          >
-            {link.label}
-          </Link>
-        ))}
-
-        {/* Botón de logout */}
         {isLoggedIn() && (
-          <button className="nav-button" onClick={handleLogout}>Cerrar sesión</button>
+          <>
+            {links.map(link => (
+              <Link
+                key={link.to}
+                to={link.to}
+                className={`nav-button ${location.pathname === link.to ? "activo" : ""}`}
+              >
+                {link.label}
+              </Link>
+            ))}
+            {/* Cerrar sesión como botón estilizado */}
+            <a href="#" className="nav-button" onClick={handleLogout}>
+              Cerrar sesión
+            </a>
+          </>
         )}
       </div>
     </nav>
