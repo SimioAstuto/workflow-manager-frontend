@@ -4,8 +4,19 @@ import { useNavigate } from "react-router-dom";
 
 export default function Register() {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
+  const [categories, setCategories] = useState([{ name: "", description: "" }]);
   const [error, setError] = useState("");
   const nav = useNavigate();
+
+  function handleCategoryChange(index, field, value) {
+    const updated = [...categories];
+    updated[index][field] = value;
+    setCategories(updated);
+  }
+
+  function addCategoryField() {
+    setCategories([...categories, { name: "", description: "" }]);
+  }
 
   async function submit(e) {
     e.preventDefault();
@@ -13,7 +24,8 @@ export default function Register() {
       const res = await api.post("/users/register", {
         name: form.name.trim(),
         email: form.email.trim(),
-        password: form.password
+        password: form.password,
+        categories: categories.filter(c => c.name.trim() !== "")
       });
 
       if (res.status === 201 || res.data.message?.includes("registrado")) {
@@ -52,6 +64,27 @@ export default function Register() {
           onChange={e => setForm({ ...form, password: e.target.value })}
           required
         />
+
+        <h3>Categorías de servicios base</h3>
+        {categories.map((cat, index) => (
+          <div key={index}>
+            <input
+              type="text"
+              placeholder="Nombre de categoría"
+              value={cat.name}
+              onChange={e => handleCategoryChange(index, "name", e.target.value)}
+              required={index === 0}
+            />
+            <input
+              type="text"
+              placeholder="Descripción"
+              value={cat.description}
+              onChange={e => handleCategoryChange(index, "description", e.target.value)}
+            />
+          </div>
+        ))}
+        <button type="button" onClick={addCategoryField}>Agregar otra categoría</button>
+
         <button type="submit">Registrarse</button>
         {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
       </form>
