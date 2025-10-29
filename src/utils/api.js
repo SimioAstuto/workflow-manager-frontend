@@ -1,12 +1,15 @@
 import axios from "axios";
 
-const token = localStorage.getItem("token");
-
 const api = axios.create({
-  baseURL: "https://workflow-manager-backend-z51a.onrender.com/api",
-  headers: {
-    Authorization: token ? `Bearer ${token}` : undefined
+  baseURL: "https://workflow-manager-backend-z51a.onrender.com/api"
+});
+
+api.interceptors.request.use(config => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
   }
+  return config;
 });
 
 export default api;
