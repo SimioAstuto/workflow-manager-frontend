@@ -65,7 +65,7 @@ export default function Register() {
           required
         />
 
-        <h3>Categorías de servicios base</h3>
+        <h3>Categoria Servicios</h3>
         {categories.map((cat, index) => (
           <div key={index}>
             <input
