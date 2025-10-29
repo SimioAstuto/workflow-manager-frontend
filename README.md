@@ -1,16 +1,60 @@
-# React + Vite
+# WorkFlow Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**WorkFlow Manager** es una aplicación web profesional desarrollada por [SimioAstuto](https://github.com/SimioAstuto), pensada para gestionar trabajos, clientes y categorías de servicios de forma modular, eficiente y visualmente personalizada. Este proyecto forma parte de una entrega académica final, con enfoque en arquitectura backend, diseño frontend adaptable y despliegue completo en Vercel y Render.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tecnologías utilizadas
 
-## React Compiler
+- **Frontend:** React + Vite
+- **Backend:** Node.js + Express
+- **Base de datos:** MongoDB
+- **Autenticación:** JWT
+- **Despliegue:** Vercel (frontend) + Render (backend)
+- **Estilo:** CSS personalizado con fondo geométrico y paleta SimioAstuto
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 📦 Estructura del proyecto
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- `/src/components`: Componentes reutilizables como NavBar, Footer, etc.
+- `/src/routes`: Vistas principales (Dashboard, Login, Registro, JobForm)
+- `/src/utils`: Funciones auxiliares (API, auth, validaciones)
+- `/public`: Archivos estáticos como fondo y logo
+
+---
+
+## 🧠 Funcionalidades principales
+
+- Registro de trabajos con cliente, tipo, categoría, cotización y fecha
+- Visualización de trabajos en tabla con acciones (terminar, eliminar)
+- Dashboard con gráfico de trabajos por mes y resumen financiero
+- Gestión de categorías de servicio
+- Flujo de autenticación con recuperación de contraseña
+- Interfaz responsive y estética personalizada
+
+---
+
+## 📊 Dashboard
+
+- Gráfico de barras con trabajos agrupados por mes
+- Tabla con trabajos pendientes y finalizados (ordenados)
+- Resumen financiero con totales en pesos argentinos
+
+---
+
+## 🔐 Seguridad
+
+- Validación de sesión con tokens JWT
+- Acceso protegido a rutas privadas
+- Sanitización de inputs y manejo de errores
+
+---
+
+## 🛠 Instalación local
+
+```bash
+git clone https://github.com/SimioAstuto/workflow-manager.git
+cd workflow-manager
+npm install
+npm run dev
