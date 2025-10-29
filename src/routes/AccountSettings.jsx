@@ -67,6 +67,28 @@ export default function AccountSettings() {
     }
   }
 
+  async function updateEmail() {
+    const nuevoCorreo = prompt("Ingresá tu nuevo correo:");
+    if (!nuevoCorreo) return;
+    try {
+      await api.put("/users/me", { email: nuevoCorreo });
+      alert("Correo actualizado correctamente.");
+    } catch (err) {
+      alert("Error al actualizar el correo.");
+    }
+  }
+
+  async function updatePassword() {
+    const nuevaPass = prompt("Ingresá tu nueva contraseña:");
+    if (!nuevaPass) return;
+    try {
+      await api.put("/users/me", { password: nuevaPass });
+      alert("Contraseña actualizada correctamente.");
+    } catch (err) {
+      alert("Error al actualizar la contraseña.");
+    }
+  }
+
   return (
     <section className="App">
       <h2>Configuración de cuenta</h2>
@@ -141,6 +163,12 @@ export default function AccountSettings() {
           ))}
         </tbody>
       </table>
+
+      <h3 style={{ marginTop: "40px" }}>Actualizar correo</h3>
+      <button onClick={updateEmail}>Cambiar correo</button>
+
+      <h3 style={{ marginTop: "20px" }}>Actualizar contraseña</h3>
+      <button onClick={updatePassword}>Cambiar contraseña</button>
 
       <h3 style={{ marginTop: "40px" }}>Eliminar cuenta</h3>
       <button onClick={deleteAccount} style={{ backgroundColor: "crimson", color: "white" }}>

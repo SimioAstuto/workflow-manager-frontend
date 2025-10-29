@@ -25,13 +25,6 @@ export default function NavBar() {
       </div>
 
       <div className="nav-links">
-        {/* NO logueado */}
-        {!isLoggedIn() && (
-          <Link to="/" className={`nav-button ${location.pathname === "/" ? "activo" : ""}`}>
-            Inicio
-          </Link>
-        )}
-
         {/* Enlaces protegidos */}
         {isLoggedIn() && links.map(link => (
           <Link
@@ -43,15 +36,9 @@ export default function NavBar() {
           </Link>
         ))}
 
-        {/* Botones de sesión */}
-        {isLoggedIn() ? (
+        {/* Botón de logout */}
+        {isLoggedIn() && (
           <button className="nav-button" onClick={handleLogout}>Cerrar sesión</button>
-        ) : (
-          <>
-            <Link to="/login" className="nav-button">Login</Link>
-            <Link to="/register" className="nav-button">Registro</Link>
-            <Link to="/forgot-password" className="nav-button">¿Olvidaste tu contraseña?</Link>
-          </>
         )}
       </div>
     </nav>
