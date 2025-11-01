@@ -100,18 +100,3 @@ Esto se maneja automáticamente en:
 ```
 src/api/axios.js
 ```
-🧪 Ejemplo de uso
----
-Ingresar a la app.
-
-Registrarse o iniciar sesión.
-
-Ir al panel (Dashboard).
-
-Acceder a:
-
-Gestión de Categorías
-
-Gestión de Productos
-
-Crear, actualizar o eliminar datos según sea necesario.
