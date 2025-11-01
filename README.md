@@ -1,60 +1,117 @@
-# WorkFlow Manager
+# Workflow Manager (Productos, Categorías y Usuarios)
 
-**WorkFlow Manager** es una aplicación web desarrollada por [SimioAstuto](https://github.com/SimioAstuto), pensada para gestionar trabajos, clientes y categorías de servicios de forma modular, eficiente y visualmente personalizada.
+Este frontend permite interactuar con la API del backend para gestionar **Usuarios**, **Categorías** y **Productos**.  
+Incluye pantallas para **iniciar sesión**, **registrarse**, ver listados, crear nuevos registros y modificarlos.
 
----
-
-## 🚀 Tecnologías utilizadas
-
-- **Frontend:** React + Vite
-- **Backend:** Node.js + Express
-- **Base de datos:** MongoDB
-- **Autenticación:** JWT
-- **Despliegue:** Vercel (frontend) + Render (backend)
-- **Estilo:** CSS personalizado con fondo geométrico y paleta SimioAstuto
+La interfaz está desarrollada con **React** y se conecta al backend mediante **Axios**.  
+Cuando el usuario inicia sesión, se almacena un **token** que permite acceder a las funciones protegidas (crear, editar y eliminar).
 
 ---
 
-## 📦 Estructura del proyecto
+## ✅ Funcionalidades principales
 
-- `/src/components`: Componentes reutilizables como NavBar, Footer, etc.
-- `/src/routes`: Vistas principales (Dashboard, Login, Registro, JobForm)
-- `/src/utils`: Funciones auxiliares (API, auth, validaciones)
-- `/public`: Archivos estáticos como fondo y logo
-
----
-
-## 🧠 Funcionalidades principales
-
-- Registro de trabajos con cliente, tipo, categoría, cotización y fecha
-- Visualización de trabajos en tabla con acciones (terminar, eliminar)
-- Dashboard con gráfico de trabajos por mes y resumen financiero
-- Gestión de categorías de servicio
-- Flujo de autenticación con recuperación de contraseña
-- Interfaz responsive y estética personalizada
+- Registro e inicio de sesión de usuarios
+- Listado de productos y categorías
+- Creación y edición de productos
+- Creación y edición de categorías
+- Manejo automático del **token JWT**
+- Navegación utilizando **React Router**
+- Interfaz simple y clara para uso práctico
 
 ---
 
-## 📊 Dashboard
+## 🔧 Tecnologías utilizadas
 
-- Gráfico de barras con trabajos agrupados por mes
-- Tabla con trabajos pendientes y finalizados (ordenados)
-- Resumen financiero con totales en pesos argentinos
-
----
-
-## 🔐 Seguridad
-
-- Validación de sesión con tokens JWT
-- Acceso protegido a rutas privadas
-- Sanitización de inputs y manejo de errores
+| Tecnología | Descripción |
+|----------|-------------|
+| React | Framework del lado del cliente |
+| React Router DOM | Navegación entre pantallas |
+| Axios | Comunicación con la API |
+| Vite | Servidor de desarrollo y empaquetado |
+| LocalStorage | Almacenamiento del token |
 
 ---
 
-## 🛠 Instalación local
+## 📂 Estructura del Proyecto
+```
+src/
+├── api/
+│ └── axios.js # Configuración del cliente Axios con baseURL y token
+│
+├── pages/ # Cada pantalla de la aplicación
+│ ├── Login.jsx
+│ ├── Register.jsx
+│ ├── Dashboard.jsx
+│ ├── CategoryManager.jsx
+│ └── ProductManager.jsx
+│
+├── components/ # Componentes reutilizables
+│ ├── Navbar.jsx
+│ └── Footer.jsx
+│
+├── context/
+│ └── AuthContext.jsx # Manejo global del usuario y token
+│
+├── App.jsx # Rutas principales
+└── main.jsx # Punto de entrada del proyecto
+```
+---
 
-```bash
-git clone https://github.com/SimioAstuto/workflow-manager.git
-cd workflow-manager
+## ⚙️ Configuración e instalación
+
+1) Clonar el repositorio:
+```
+git clone <URL_DEL_REPOSITORIO_FRONTEND>
+```
+Entrar al proyecto:
+```
+cd frontend
+```
+Instalar dependencias:
+```
 npm install
+```
+Crear archivo .env:
+```
+VITE_API_URL=http://localhost:5000
+```
+Si el backend está desplegado en la nube, reemplazar por la URL pública
+Ej: VITE_API_URL=https://workflow-manager.onrender.com
+
+Ejecutar:
+```
 npm run dev
+```
+Abrir en el navegador:
+```
+http://localhost:5173
+```
+🔐 Cómo funciona la autenticación
+---
+El usuario inicia sesión → el backend devuelve un token.
+
+El frontend guarda ese token en localStorage.
+
+Cualquier petición protegida (crear, editar o borrar) enviará el token automáticamente.
+
+Si el token es inválido o expira, se bloquean las acciones protegidas.
+
+Esto se maneja automáticamente en:
+```
+src/api/axios.js
+```
+🧪 Ejemplo de uso
+---
+Ingresar a la app.
+
+Registrarse o iniciar sesión.
+
+Ir al panel (Dashboard).
+
+Acceder a:
+
+Gestión de Categorías
+
+Gestión de Productos
+
+Crear, actualizar o eliminar datos según sea necesario.
