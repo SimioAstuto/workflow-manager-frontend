@@ -1,6 +1,6 @@
 # WorkFlow Manager
 
-**WorkFlow Manager** es una aplicación web profesional desarrollada por [SimioAstuto](https://github.com/SimioAstuto), pensada para gestionar trabajos, clientes y categorías de servicios de forma modular, eficiente y visualmente personalizada. Este proyecto forma parte de una entrega académica final, con enfoque en arquitectura backend, diseño frontend adaptable y despliegue completo en Vercel y Render.
+**WorkFlow Manager** es una aplicación web desarrollada por [SimioAstuto](https://github.com/SimioAstuto), pensada para gestionar trabajos, clientes y categorías de servicios de forma modular, eficiente y visualmente personalizada. Este proyecto forma parte de una entrega académica final, con enfoque en arquitectura backend, diseño frontend adaptable y despliegue completo en Vercel y Render.
 
 ---
 
