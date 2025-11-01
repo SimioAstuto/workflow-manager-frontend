@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://workflow-manager-backend-z51a.onrender.com/api"
+  baseURL: "https://workflow-manager-backend-1.onrender.com/api"
 });
 
 api.interceptors.request.use(config => {
